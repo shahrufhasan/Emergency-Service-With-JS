@@ -18,18 +18,29 @@ getEmelemtsFormID("card-box").addEventListener("click", function (e) {
 // Calling Functionality
 getEmelemtsFormID("card-box").addEventListener("click", function (e) {
   if (e.target.className.includes("call-button")) {
+    const callButton = e.target;
+
     const starIcon = getEmelemtsFormID("star-counter").innerText;
     const starChange = Number(starIcon) - 20;
     if (starChange < 0) {
       return;
     }
+
     getEmelemtsFormID("star-counter").innerText = starChange;
 
     // taking id propeties
-    const headingInfo = getEmelemtsFormID("heading-info").innerText;
-    const numberInfo = getEmelemtsFormID("number-info").innerText;
+    const headingInfo =
+      callButton.parentNode.parentNode.children[1].children[0].innerText;
+
+    const numberInfo =
+      callButton.parentNode.parentNode.children[1].children[2].innerText;
+    console.log(numberInfo);
+    const subHeading =
+      callButton.parentNode.parentNode.children[1].children[1].innerText;
     // Time showing
     const dateInfo = new Date().toLocaleTimeString();
+
+    alert(`calling ${subHeading} ${numberInfo}`);
 
     // create new div
     const callHistory = getEmelemtsFormID("call-history");
@@ -57,6 +68,8 @@ getEmelemtsFormID("card-box").addEventListener("click", function (e) {
     getEmelemtsFormID("copy-counter").innerText = copyCounter;
 
     // Copy the number
+    const number = getEmelemtsFormID("number-info").innerText;
+    navigator.clipboard.writeText(number);
   }
 });
 
