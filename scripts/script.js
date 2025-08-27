@@ -23,6 +23,7 @@ getEmelemtsFormID("card-box").addEventListener("click", function (e) {
     const starIcon = getEmelemtsFormID("star-counter").innerText;
     const starChange = Number(starIcon) - 20;
     if (starChange < 0) {
+      alert("❌ আপনার পর্যাপ্ত কয়েন নেই! কল করতে কমপক্ষে ২০ কয়েন লাগবে।");
       return;
     }
 
@@ -66,7 +67,9 @@ getEmelemtsFormID("card-box").addEventListener("click", function (e) {
     const copyButton = e.target;
     const copyNumber =
       copyButton.parentNode.parentNode.children[1].children[2].innerText;
-    console.log(copyNumber);
+
+    // Copy alert
+    alert(`নাম্বার কপি হয়েছে : ${copyNumber}`);
 
     // Increase Copy counter
 
