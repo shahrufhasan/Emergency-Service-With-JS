@@ -40,7 +40,7 @@ getEmelemtsFormID("card-box").addEventListener("click", function (e) {
     // Time showing
     const dateInfo = new Date().toLocaleTimeString();
 
-    alert(`calling ${subHeading} ${numberInfo}`);
+    alert(`📞 calling ${subHeading} ${numberInfo}`);
 
     // create new div
     const callHistory = getEmelemtsFormID("call-history");
@@ -63,13 +63,19 @@ getEmelemtsFormID("card-box").addEventListener("click", function (e) {
 // Copy Button
 getEmelemtsFormID("card-box").addEventListener("click", function (e) {
   if (e.target.className.includes("copy-btn")) {
-    const copyInfo = getEmelemtsFormID("copy-counter").innerText;
-    const copyCounter = Number(copyInfo) + 1;
-    getEmelemtsFormID("copy-counter").innerText = copyCounter;
+    const copyButton = e.target;
+    const copyNumber =
+      copyButton.parentNode.parentNode.children[1].children[2].innerText;
+    console.log(copyNumber);
+
+    // Increase Copy counter
+
+    const copyCounter = getEmelemtsFormID("copy-counter").innerText;
+    const copyIncrease = Number(copyCounter) + 1;
+    getEmelemtsFormID("copy-counter").innerText = copyIncrease;
 
     // Copy the number
-    const number = getEmelemtsFormID("number-info").innerText;
-    navigator.clipboard.writeText(number);
+    navigator.clipboard.writeText(copyNumber);
   }
 });
 
