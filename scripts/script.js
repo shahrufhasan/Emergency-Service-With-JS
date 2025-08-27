@@ -28,21 +28,40 @@ getEmelemtsFormID("card-box").addEventListener("click", function (e) {
     // taking id propeties
     const headingInfo = getEmelemtsFormID("heading-info").innerText;
     const numberInfo = getEmelemtsFormID("number-info").innerText;
+    // Time showing
+    const dateInfo = new Date().toLocaleTimeString();
 
     // create new div
     const callHistory = getEmelemtsFormID("call-history");
     const newCallHistory = document.createElement("div");
     newCallHistory.innerHTML = `
             <div
-              class="flex bg-[#fafafa] justify-between p-7 mx-4 my-2 rounded-xl"
+              class="flex items-center bg-[#fafafa] justify-between p-7 mx-4 my-2 rounded-xl"
             >
               <div>
-                <h2>${headingInfo}</h2>
-                <p>${numberInfo}</p>
+                <h2 class="text-[#111111]">${headingInfo}</h2>
+                <p class="text-[#5c5c5c]">${numberInfo}</p>
               </div>
-              <div>Time of blaa</div>
+              <div class="text-[#111111]">${dateInfo}</div>
             </div>
     `;
     callHistory.appendChild(newCallHistory);
   }
+});
+
+// Copy Button
+getEmelemtsFormID("card-box").addEventListener("click", function (e) {
+  if (e.target.className.includes("copy-btn")) {
+    const copyInfo = getEmelemtsFormID("copy-counter").innerText;
+    const copyCounter = Number(copyInfo) + 1;
+    getEmelemtsFormID("copy-counter").innerText = copyCounter;
+
+    // Copy the number
+  }
+});
+
+// Clear Button
+getEmelemtsFormID("clear-btn").addEventListener("click", function () {
+  const clearInfo = getEmelemtsFormID("call-history");
+  clearInfo.innerHTML = "";
 });
